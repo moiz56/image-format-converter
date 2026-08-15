@@ -1,0 +1,11 @@
+#logs
+file_watcher.log
+
+# env
+.env
+
+# cache
+__pycache__
+
+#venv
+venv
