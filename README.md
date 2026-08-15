@@ -8,7 +8,7 @@ different extension (e.g. `photo.png` -> `photo.jpg`). This is helpful when we w
 ```bash
 python -m venv venv
 source venv/bin/activate
-pip install -r requirements.txt
+pip install -e ".[dev]"
 cp .env.example .env
 ```
 
@@ -22,10 +22,16 @@ Set in `.env` (see `.env.example`):
 ## Run
 
 ```bash
-python app.py
+file-watcher
 ```
 
-Press `Ctrl+C` to stop.
+(or `python -m file_watcher.app`). Press `Ctrl+C` to stop.
+
+## Tests
+
+```bash
+pytest tests/ -v
+```
 
 ## Logs
 
@@ -34,7 +40,7 @@ size for each conversion.
 
 ## Supported conversions
 
-Any conversion Pillow can do (see `conversions.py`).
+Any conversion Pillow can do (see `src/file_watcher/conversions.py`).
 
 ## V1.0
 

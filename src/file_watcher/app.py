@@ -5,35 +5,35 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-from logger_config import setup_logging
-from watcher import start_watching
+from file_watcher.logger_config import setup_logging
+from file_watcher.watcher import start_watching
 
-
-load_dotenv()
 
 DEFAULT_WATCH_FOLDER = Path.home() / "Pictures"
 
-WATCH_FOLDER = Path(os.getenv("WATCH_FOLDER", str(DEFAULT_WATCH_FOLDER)))
-WATCH_RECURSIVE = os.getenv("WATCH_RECURSIVE", "false").strip().lower() in (
-    "1",
-    "true",
-    "yes",
-)
 
-setup_logging()
-logger = logging.getLogger(__name__)
+def main():
+    load_dotenv()
 
+    watch_folder = Path(os.getenv("WATCH_FOLDER", str(DEFAULT_WATCH_FOLDER)))
+    watch_recursive = os.getenv("WATCH_RECURSIVE", "false").strip().lower() in (
+        "1",
+        "true",
+        "yes",
+    )
 
-if __name__ == "__main__":
+    setup_logging()
+    logger = logging.getLogger(__name__)
+
     start_time = time.perf_counter()
     logger.info(
         "Watching: %s (recursive=%s)",
-        WATCH_FOLDER,
-        WATCH_RECURSIVE,
+        watch_folder,
+        watch_recursive,
     )
 
     try:
-        start_watching(WATCH_FOLDER, recursive=WATCH_RECURSIVE)
+        start_watching(watch_folder, recursive=watch_recursive)
 
     except RuntimeError as error:
         logger.error("Failed to start watcher: %s", error)
@@ -44,3 +44,7 @@ if __name__ == "__main__":
     finally:
         elapsed = time.perf_counter() - start_time
         logger.info("File watcher stopped after %.3fs total runtime", elapsed)
+
+
+if __name__ == "__main__":
+    main()

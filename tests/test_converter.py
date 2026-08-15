@@ -5,8 +5,8 @@ from pathlib import Path
 import pytest
 from PIL import Image
 
-from converter import convert_file
-from conversions import is_supported
+from file_watcher.converter import convert_file
+from file_watcher.conversions import is_supported
 
 
 FIXTURES = Path(__file__).parent / "fixtures"

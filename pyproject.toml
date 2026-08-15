@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "file-watcher"
+version = "0.1.0"
+description = "Watches a folder and converts files via Pillow when renamed to a different extension"
+requires-python = ">=3.9"
+dependencies = [
+    "watchdog",
+    "pillow",
+    "python-dotenv",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[project.scripts]
+file-watcher = "file_watcher.app:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -7,5 +7,13 @@ file_watcher.log
 # cache
 __pycache__
 
+# packaging
+*.egg-info
+build
+dist
+
 #venv
 venv
+
+#pytest cache
+.pytest_cache

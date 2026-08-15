@@ -6,8 +6,8 @@ from concurrent.futures import ThreadPoolExecutor
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
-from converter import convert_file
-from conversions import is_supported
+from file_watcher.converter import convert_file
+from file_watcher.conversions import is_supported
 
 
 logger = logging.getLogger(__name__)

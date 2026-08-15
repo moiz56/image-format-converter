@@ -4,7 +4,7 @@ from pathlib import Path
 
 from PIL import Image
 
-from conversions import get_output_format
+from file_watcher.conversions import get_output_format
 
 
 logger = logging.getLogger(__name__)
